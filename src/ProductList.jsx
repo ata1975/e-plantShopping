@@ -10,7 +10,7 @@ function ProductList({ onHomeClick }) {
     const [addedToCart, setAddedToCart] = useState({});
     const dispatch = useDispatch();
 
-    const cart = useSelector((state) => state.cart);
+    const cart = useSelector(state => state.cart.items)
 
     const plantsArray = [
         {
@@ -299,7 +299,7 @@ function ProductList({ onHomeClick }) {
                                 <div className="product-title">{plant.name}</div>
                                 <div className="product-price">{plant.cost}</div>
                                 <div>{plant.description}</div>
-                                {cart.items.some(item => item.name === plant.name) ? (
+                                {cart.some(item => item.name === plant.name) ? (
                                     <button className="product-button added-to-cart">Added to Cart</button>
                                 ) : (
                                     <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
